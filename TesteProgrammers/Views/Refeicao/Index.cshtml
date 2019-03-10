@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TesteProgrammers.ViewModels.ListarRefeicoesViewModel>
+
+@{
+    ViewData["Title"] = "Refeições";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-2">
+    <div class="col-md-5">
+        <h4>Refeições - @ViewData["Data"]</h4>
+    </div>
+    <div class="col-md-5">
+        <form class="form-inline" asp-action="Index">
+            <div class="form-group mb-2">
+                <label for="dataPedido">Pesquisar por data:&nbsp;</label>
+                <input type="date" name="dataPedido" class="form-control" id="dataPedido">
+            </div>
+            &nbsp;<button type="submit" class="btn btn-light mb-2">Pesquisar</button>
+        </form>
+    </div>
+</div>
+<div class="row justify-content-center mt-3">
+    <div class="col-md-10">
+        <table class="table table-hover table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th>Funcionário</th>
+                    <th>Prato</th>
+                    <th>Composição</th>
+                    <th>Tamanho</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Funcionario</td>
+                        <td>@item.Prato</td>
+                        <td>@item.Composicao</td>
+                        <td>@item.Tamanho</td>
+                        <td>@item.Valor</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

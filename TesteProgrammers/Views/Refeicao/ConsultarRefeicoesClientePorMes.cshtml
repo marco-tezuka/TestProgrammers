@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TesteProgrammers.Models.RefeicaoCliente>
+
+@{
+    ViewData["Title"] = "Consultar Refeições por Mês";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row justify-content-center mt-2">
+    <div class="col-md-5">
+        <h4>Refeições por Mês - @ViewData["Mes"]</h4>
+    </div>
+    <div class="col-md-5">
+        <form class="form-inline" asp-action="ConsultarRefeicoesClientePorMes">
+            <div class="form-group mb-2">
+                <label for="dataConsulta">Pesquisar por data:&nbsp;</label>
+                <input type="month" name="dataConsulta" class="form-control" id="dataConsulta">
+            </div>
+            &nbsp;<button type="submit" class="btn btn-light mb-2">Pesquisar</button>
+        </form>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+    <div class="col-md-10">
+        <table class="table table-hover table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th>Funcionário</th>
+                    <th>Qtd. Refeições</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Funcionario</td>
+                        <td>@item.QtdRefeicoes</td>
+                        <td>@item.Total.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
